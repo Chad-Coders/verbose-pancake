@@ -1,10 +1,29 @@
+import ast
 import json
 
+import requests
+from flask import Flask, jsonify
+from flask_restful import Api, Resource, reqparse
 from justwatch import JustWatch
 
-just_watch = JustWatch(country='SE')
+#print(results['items'])
+#for x in results['items']:
+#    print(x['title'])
+#with open('json_data.json', 'w') as outfile:
+#    json.dump(results['items'], outfile)
 
-results = just_watch.search_for_item(query='avengers')
+app = Flask(__name__)
 
-with open('json_data.json', 'w') as outfile:
-    json.dump(results, outfile)
+@app.route('/')
+def index():
+    return "Chad Coders backend API"
+
+@app.route('/entertainment', methods=['GET'])
+def get():
+    my_dict = {"0": []}
+    just_watch = JustWatch(country='SE')
+    results = just_watch.search_for_item(query='avengers')
+    return jsonify({'data':results['items']})
+
+if __name__ == "__main__":
+    app.run(debug=True)
