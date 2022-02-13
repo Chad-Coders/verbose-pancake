@@ -1,2 +1,2 @@
 # verbose-pancake
-Streamer scraper
+Uses justwatch api to search for movies/tvshows
