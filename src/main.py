@@ -38,5 +38,13 @@ def getMovie():
         json.dump(results, outfile)
     return jsonify(results)
 
+# Code for getting providers
+#    l = list(range(0))
+#    for x in results:
+#        l.append(x['short_name'])
+#        l.append(x['icon_url'])
+#    with open('json_data.json', 'w') as outfile:
+#        json.dump(l, outfile)
+
 if __name__ == "__main__":
     app.run(debug=True)
